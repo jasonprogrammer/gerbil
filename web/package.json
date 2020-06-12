@@ -1,0 +1,21 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel css/*.entry.scss js/*.entry.js --out-dir static/dist --public-url .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cash-dom": "^6.0.2",
+    "sass": "^1.25.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "highlight.js": "^9.18.1"
+  }
+}

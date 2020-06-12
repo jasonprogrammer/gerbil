@@ -1,0 +1,23 @@
+<section class="st-comments mt5 bt b--gray">
+  <h2>Comments</h2>
+  {{{body}}}
+</section>
+
+<section>
+  <div id="comment-form">
+    <h2 class="gray">Leave a comment</h2>
+    <textarea style="height: 10em; width: 100%" rows="12" placeholder="Type your comment here..." id="comment-submit-ta"></textarea>
+
+    <div id="spam-container" class="mt3 dark-gray" data-spam-answer="{{spam_answer_encrypted}}">
+      {{{spam_question}}} (spam prevention)
+    </div>
+    <input type="text" id="answer">
+    <a class="f6 link dim br1 ph3 pv2 mb2 dib white bg-dark-gray mt2" href="#0" id="comment-submit-btn">Submit</a>
+    <div id="spam-fail" class="dark-red" style="display: none">
+      The answer you provided is incorrect.
+    </div>
+  </div>
+  <div style="display: none" id="comment-success" class="dark-green">
+    Your comment has been submitted successfully. Thank you!
+  </div>
+</section>

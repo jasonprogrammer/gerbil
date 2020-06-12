@@ -1,0 +1,83 @@
+body {
+    font-family: Poppins;
+    background-color: #3a3a3a;
+}
+
+.logo-text {
+  color: #ffe8b6;
+}
+
+.st-dark-gray {
+    color: #4d4d4d;
+}
+
+.tag-link {
+    display: block;
+    color: #4d4d4d;
+}
+
+.body-section {
+    background-color: white;
+    padding: 2rem;
+    min-height: 30rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .body-section {
+        padding-left: 3rem;
+        margin-left: 2rem;
+    }
+    .center-section {
+        -webkit-box-shadow: 10px 10px 15px -10px rgba(179,179,179,1);
+        -moz-box-shadow: 10px 10px 15px -10px rgba(179,179,179,1);
+        box-shadow: 10px 10px 15px -10px rgba(179,179,179,1);
+        border-right: 1px solid #eee;
+        border-left: 1px solid #eee;
+    }
+}
+
+.st-content pre {
+    background-color: #f6f6f6;
+    display: block;
+    padding: 1em;
+    overflow-x: auto;
+}
+
+.st-content a {
+    color: #111111;
+}
+
+.st-content .st-content-gray {
+    color: gray;
+    margin-bottom: 3em;
+}
+
+.st-content-date {
+    color: #4d4d4d;
+}
+
+.st-comment {
+}
+
+.st-comment-date {
+    color: gray;
+    background-color: #eaeaea;
+    padding: .2em .4em;
+}
+
+.st-header-anchor {
+    text-decoration: none;
+}
+
+.st-header-anchor :hover{
+    text-decoration: underline;
+}
+
+.comment-link {
+    color: #3a3a3a;
+    display: block;
+}
+
+.moderate-comments-container {
+    min-height: 30rem;
+}

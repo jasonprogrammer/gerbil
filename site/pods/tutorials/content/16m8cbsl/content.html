@@ -1,0 +1,30 @@
+<nav class="crumb-nav mb5">
+  <a class="crumb-link f5" href="/">Home</a>
+
+<span class="crumb-separator f7 mh1">/</span>
+
+<a class="crumb-link f5" href="/c/tutorials">Tutorials</a>
+
+<span class="crumb-separator f7 mh1">/</span>
+
+<span class="crumb-title f5">Syntax highlighting for code</span>
+
+
+</nav>
+
+<h1><a class="st-header-anchor" id="syntaxhighlightingforcode" href="#syntaxhighlightingforcode">Syntax highlighting for code</a></h1>
+<p>Here is a sample Python code snippet:</p>
+<pre><code class="language-python">for i in range(10):
+    print(&quot;Sample python snippet!&quot;)
+</code></pre>
+<p>Notice how some of the text appears in different colors, for readability.</p>
+<p>To accomplish this, specify the language in the Markdown, e.g.:</p>
+<pre><code>```python
+for i in range(10):
+    print(&quot;Sample python snippet!&quot;)
+```
+</code></pre>
+<p>The colorization is done on the front-end, using
+<a href="https://highlightjs.org/">highlightjs</a>.</p>
+<p>Make sure that any languages you'd like to colorize are added to the
+part of the code that configures highlightJS (see <strong>web/js/content.entry.js</strong>).</p>

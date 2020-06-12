@@ -1,0 +1,19 @@
+<main class="pa4 black-80">
+    <form class="measure center" id="commentForm" method="POST">
+    <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+      <legend class="f4 fw6 ph0 mh0">Moderate Comment</legend>
+      <div class="mt3">
+        <label class="db fw6 lh-copy f6" for="username">Markdown</label>
+        <textarea id="commentMD" name="commentMD" rows="10" class="db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" aria-describedby="comment-markdown">{{{commentMD}}}</textarea>
+      </div>
+      <div class="mv3">
+        <label class="db fw6 lh-copy f6" for="password">HTML</label>
+        <textarea id="commentHTML" name="commentHTML" rows="10" class="db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" aria-describedby="comment-html">{{{commentHTML}}}</textarea>
+      </div>
+    </fieldset>
+    <div class="">
+      <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Preview">
+    </div>
+    <a href="/moderate" class="db mt4 black">Back to moderate page</a>
+  </form>
+</main>

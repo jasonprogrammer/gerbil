@@ -1,0 +1,50 @@
+<nav class="crumb-nav mb5">
+  <a class="crumb-link f5" href="/">Home</a>
+
+<span class="crumb-separator f7 mh1">/</span>
+
+<a class="crumb-link f5" href="/c/reference">Reference</a>
+
+<span class="crumb-separator f7 mh1">/</span>
+
+<span class="crumb-title f5">The Gerbil CLI</span>
+
+
+</nav>
+
+<h1><a class="st-header-anchor" id="thegerbilcli" href="#thegerbilcli">The Gerbil CLI</a></h1>
+<div class="st-content-gray">June 8, 2020</div>
+<p>To see the CLI commands available, run <code>gerbil</code> at a command prompt:</p>
+<pre><code class="language-shell">$ gerbil
+Usage:
+  gerbil {SUBCMD}  [sub-command options &amp; parameters]
+where {SUBCMD} is one of:
+  help          print comprehensive or per-cmd help
+  create
+  serve
+  clean
+  build
+  list
+  watchcontent
+
+gerbil {-h|--help} or with no args at all prints this message.
+gerbil --help-syntax gives general cligen syntax help.
+Run &quot;gerbil {help SUBCMD|SUBCMD --help}&quot; to see help for just SUBCMD.
+Run &quot;gerbil help&quot; to get *comprehensive* help.
+</code></pre>
+<h2><a class="st-header-anchor" id="gerbilcreate" href="#gerbilcreate">gerbil create</a></h2>
+<p>This command is used to create new content. See examples <a href="TODOLINK">here</a></p>
+<h2><a class="st-header-anchor" id="gerbilserve" href="#gerbilserve">gerbil serve</a></h2>
+<p>Serves the website (default on port 5000). To serve on another port, set the
+<code>SERVER_PORT</code> environment variable, e.g.:</p>
+<pre><code class="language-shell">export SERVER_PORT=5002
+</code></pre>
+<h2><a class="st-header-anchor" id="gerbilclean" href="#gerbilclean">gerbil clean</a></h2>
+<p>Deletes files (e.g. HTML files) created during the build process.</p>
+<h2><a class="st-header-anchor" id="gerbilbuild" href="#gerbilbuild">gerbil build</a></h2>
+<p>Builds the markdown files into HTML files, along with breadcrumb navigation and
+topic pages.</p>
+<h2><a class="st-header-anchor" id="gerbillist" href="#gerbillist">gerbil list</a></h2>
+<p>Lists all of the articles created.</p>
+<h2><a class="st-header-anchor" id="gerbilwatchcontent" href="#gerbilwatchcontent">gerbil watchcontent</a></h2>
+<p>This is used to build a piece of content on an interval.</p>

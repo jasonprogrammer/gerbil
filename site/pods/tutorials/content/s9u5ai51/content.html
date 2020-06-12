@@ -1,0 +1,35 @@
+<nav class="crumb-nav mb5">
+  <a class="crumb-link f5" href="/">Home</a>
+
+<span class="crumb-separator f7 mh1">/</span>
+
+<a class="crumb-link f5" href="/c/tutorials">Tutorials</a>
+
+<span class="crumb-separator f7 mh1">/</span>
+
+<span class="crumb-title f5">How to add an article</span>
+
+
+</nav>
+
+<h1><a class="st-header-anchor" id="howtoaddanarticle" href="#howtoaddanarticle">How to add an article</a></h1>
+<p>Articles are grouped into pods (topics). To add an article, run the following CLI command:</p>
+<pre><code class="language-shell">gerbil create mytopic
+</code></pre>
+<p>This will create a directory called <code>mytopic</code> under the <strong>pods</strong> directory, as
+well as some additional files:</p>
+<pre><code class="language-shell">jason@mint:~/projects/mysite$ gerbil create mytopic
+INFO Creating pod meta file: /home/jason/projects/mysite/site/pods/mytopic/meta.json
+INFO Creating content in dir: /home/jason/projects/mysite/site/pods/mytopic/content/9wi969rj
+INFO Creating content static dir: /home/jason/projects/mysite/site/pods/mytopic/content/9wi969rj/static
+INFO Creating meta file: /home/jason/projects/mysite/site/pods/mytopic/content/9wi969rj/meta.json
+INFO Creating content markdown file: /home/jason/projects/mysite/site/pods/mytopic/content/9wi969rj/content.md
+</code></pre>
+<p>What are these files for?</p>
+<ul>
+<li>mytopic/meta.json: Metadata for the pod (topic), such as the display name</li>
+<li>mytopic/content/9wi969rj: A unique directory for the article</li>
+<li>mytopic/content/9wi969rj/static: A directory for the article's static files</li>
+<li>mytopic/content/9wi969rj/meta.json: Metadata for the article (e.g the URL slug to use)</li>
+<li>mytopic/content/9wi969rj/content.md: The markdown file for the article's content</li>
+</ul>
