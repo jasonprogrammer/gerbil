@@ -1,4 +1,4 @@
-# Gerbil :hampster:
+# Gerbil 🐹
 
 Gerbil is a "dynamic website generator", written in Nim. It is meant to provide
 many of the conveniences of static website generators (ease of content creation,
