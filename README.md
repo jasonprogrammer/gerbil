@@ -10,7 +10,8 @@ code, or the Gerbil library can be imported to create a customized backend.
 
 ## Documentation
 
-The documentation is [here](https://getgerbil.com).
+The documentation is [here](https://getgerbil.com), and is composed and hosted
+as a Gerbil site, as a demo.
 
 ## License
 
