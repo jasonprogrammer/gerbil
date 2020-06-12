@@ -1,13 +1,17 @@
-# Gerbil: A dynamic site generator 🐹
+# Gerbil :hampster:
 
-Gerbil is a library and binary, written in Nim, that helps developers scaffold and serve dynamic websites.
+Gerbil is a "dynamic website generator", written in Nim. It is meant to provide
+many of the conveniences of static website generators (ease of content creation,
+deploying, and maintenance), but to also provide a customizable backend for
+dynamic features such as hosting user comments.
 
-## Goals
+The Gerbil binary can be used to scaffold and serve a site without writing Nim
+code, or the Gerbil library can be imported to create a customized backend.
 
-**CLI** Create topics and content faster by running CLI scaffolding commands  
-**Build content for fast loading** The markdown content are built into HTML in advance to help pages load faster.  
-**Templating system** A templating system is used so that the site template can be easily changed without a rebuild  
-**Articles** Create topics and publish articles under those topics  
-**Comments** Moderate and publish anonymous comments using an included backend.  
-**Backend code** Customize the backend by using the Gerbil library instead of the prebuilt binary  
+## Documentation
 
+The documentation is [here](https://getgerbil.com).
+
+## License
+
+MIT License
