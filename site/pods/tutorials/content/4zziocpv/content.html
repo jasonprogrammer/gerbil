@@ -13,5 +13,13 @@
 </nav>
 
 <h1><a class="st-header-anchor" id="customizablemustachetemplatesforpages" href="#customizablemustachetemplatesforpages">Customizable mustache templates for pages</a></h1>
-<p>There is a <strong>web/templates</strong> directory that contains both &quot;inner&quot; and &quot;outer&quot;
-pieces of HTML.</p>
+<p>There is a <strong>web/templates</strong> directory that contains HTML templates for the
+site.</p>
+<p>The <strong>site.html</strong> is the default outer template for all pages, but this can be
+overridden for other types of pages simply by creating one of the following
+files:</p>
+<ul>
+<li>home.html: A template used for the home page only</li>
+<li>page.html: A template used for &quot;pages&quot; (these differ from articles)</li>
+<li>404.html: A template used to display a custom 404 page</li>
+</ul>
