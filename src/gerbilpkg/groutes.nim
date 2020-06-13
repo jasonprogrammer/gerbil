@@ -115,7 +115,9 @@ router GerbilModerateRouter:
     redirect("/moderate")
 
   post "/moderate/@podName/@contentID/@commentID/preview":
-    ## Endpoint for previewing a comment
+    ## This is an endpoint that provides a preview of the content (renders the
+    ## HTML on the page), and provides "publish" and "reject" buttons for the
+    ## moderator to decide what happens with the comment.
     if not isSessionValid(request):
       resp(Http403)
 
@@ -144,6 +146,8 @@ router GerbilModerateRouter:
     )
 
   get "/moderate/@podName/@contentID/@commentID/publish/@publishValue":
+    ## This is the final page that performs the "publish" operation, and
+    ## displays the result of the operation to the moderator.
     if not isSessionValid(request):
       resp(Http403)
 
@@ -177,6 +181,10 @@ router GerbilModerateRouter:
     )
 
   get "/moderate/@podName/@contentID/@commentID":
+    ## This is a route to display the HTML and Markdown for a comment, but does
+    ## not show a preview of the comment, for security reasons. Once the markdown
+    ## and HTML have been viewed (e.g. to rule out XSS attacks), then a separate
+    ## "preview" route is available.
     if not isSessionValid(request):
       resp(Http403)
 
@@ -206,6 +214,14 @@ router GerbilModerateRouter:
 
 router GerbilStaticRouter:
   get re"^/static/(.*+)$":
+    ## This route provides the /static/ directory as a place for most of the
+    ## site's static files. Anything under the static/ directory will be
+    ## public.
+    ##
+    ## Note: This is different from the static/ directory for a specific
+    ## article (piece of content), as the static files are grouped with the
+    ## content and are published (public) or unpublished (private) along with
+    ## the content.
     let requestPath = request.matches[0]
 
     if ".." in requestPath:
@@ -225,6 +241,10 @@ router GerbilStaticRouter:
     sendFile(path)
 
 router GerbilPodTagsRouter:
+  ## This provides a route to a "tags" page that is generated during the build
+  ## process. The page shows a header for each tag that exists, and links
+  ## underneath each header to articles that have been tagged with the tag.
+  ## This tags page is created for each pod (topic).
   get "/c/@podName/tags":
     let podName = @"podName"
 
@@ -235,7 +255,9 @@ router GerbilPodTagsRouter:
     resp site.getPodTagsHTML(podName)
 
 router GerbilContentRouter:
+  ## This provides core routes related to articles and topics.
   get "/c/@podName":
+    ## This route displays links to all articles under a given pod (topic).
     let podName = @"podName"
 
     var site = getSite()
@@ -245,6 +267,7 @@ router GerbilContentRouter:
     resp site.getPodsHTML(podName)
 
   get "/c/@podName/@contentID/@title":
+    ## This is a route that displays an article (piece of content).
     let podName = @"podName"
     let contentID = @"contentID"
 
@@ -255,6 +278,8 @@ router GerbilContentRouter:
     resp site.getContentHTML(podName, contentID)
 
   get re"^/c/([\w\-^/]+)/([\w^/]+)/static/(.*+)$":
+    ## This route displays static files specific to an article (piece of
+    ## content).
     let podName = request.matches[0]
     let contentID = request.matches[1]
     let requestPath = request.matches[2]
@@ -282,6 +307,7 @@ router GerbilContentRouter:
     sendFile(path)
 
 router GerbilCommentRouter:
+  ## Routes related to submitting a comment for a piece of content.
   post "/content/@podName/@contentID/comment":
     var site = getSite()
     if site.isCommentingDisabledGlobally():
@@ -324,11 +350,18 @@ router GerbilCommentRouter:
 
 router GerbilSiteRouter:
   get "/":
+    ## This is a route to display the home page of the site.
     var site = getSite()
     resp site.getHomePageHTML()
 
 router GerbilSlugRouter:
   get "/@slug":
+    ## This is a route to show a "root page" (for lack of a better name). This
+    ## is a page with a slug that appears at the site root,
+    ## e.g. <SITE URL>/my-slug. These pages are created by creating a markdown
+    ## file, named after the slug, e.g. "my-slug.md", in the <SITE>/pages
+    ## directory. When a "gerbil build" is performed, the markdown for each
+    ## page in this directory will be built to HTML.
     let slug = @"slug"
     var site = getSite()
     let pagesDir = site.getRootPagesDir()
@@ -337,6 +370,10 @@ router GerbilSlugRouter:
     resp site.getRootPageHTML(slug, pagesDir)
 
 router Gerbil404Router:
+  ## This router displays a 404 page for any pages that do not exist.
+  ## Note: Returning a 404 from another route does not call this route; if a
+  ## 404 needs to be returned from another route, the HTML can be returned like
+  ## it is returned below.
   error Http404:
     resp Http404, getSite().get404HTML()
 
