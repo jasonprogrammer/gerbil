@@ -1,7 +1,9 @@
 {
   "id": "s9u5ai51",
   "slug": "how-to-add-an-article",
-  "tags": [],
+  "tags": [
+      "Composing articles"
+  ],
   "hash": "1ae66ff9578d0d977c579ca5d84f998bb13cef52",
   "title": "How to add an article",
   "content_type": "content",

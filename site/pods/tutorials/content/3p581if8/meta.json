@@ -1,9 +1,11 @@
 {
   "id": "3p581if8",
-  "slug": "anchor-links-for-each-article-header",
-  "tags": [],
-  "hash": "7b419b3867f41c33385e51ca69f2df7cadbf9d4a",
-  "title": "Anchor links for each article header",
+  "slug": "header-links",
+  "tags": [
+    "Feature"
+  ],
+  "hash": "a9ae057881a067736cd79d3291065cf6516d9a21",
+  "title": "Header links",
   "content_type": "content",
   "created_ts": 1592021657,
   "updated_ts": 1592021657

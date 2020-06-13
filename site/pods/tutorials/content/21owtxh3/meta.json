@@ -1,9 +1,11 @@
 {
   "id": "21owtxh3",
-  "slug": "generated-topic-links-for-use-in-the-home-page-template",
-  "tags": [],
-  "hash": "c558ff6ffb4eed7d7d31b51058853e388d3d422e",
-  "title": "Generated topic links for use in the home page template",
+  "slug": "topic-links",
+  "tags": [
+      "Templates"
+  ],
+  "hash": "989b0aa5e6eb51bc9e024a17d36e7f35073cd868",
+  "title": "Topic links",
   "content_type": "content",
   "created_ts": 1592071041,
   "updated_ts": 1592071041

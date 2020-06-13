@@ -1,8 +1,10 @@
 {
   "id": "4zziocpv",
   "slug": "customizable-mustache-templates-for-pages",
-  "tags": [],
-  "hash": "b877826609a1cb48c0821c4022665ef64d77f824",
+  "tags": [
+      "Templates"
+  ],
+  "hash": "c5202c191b5e7547443e29d2c885897dccd7828f",
   "title": "Customizable mustache templates for pages",
   "content_type": "content",
   "created_ts": 1592022632,

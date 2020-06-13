@@ -1,4 +1,4 @@
-# Anchor links for each article header
+# Header links
 
 Gerbil creates markup for each header in your article, so that it is easy for
 users to link to sections of your articles. If you

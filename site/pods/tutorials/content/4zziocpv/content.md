@@ -1,9 +1,11 @@
 # Customizable mustache templates for pages
 
-There is a **web/templates** directory that contains HTML templates for the
-site.
+There is a
+[web/templates](https://github.com/jasonprogrammer/gerbil/tree/master/web/templates)
+directory that contains HTML templates for the site.
 
-The **site.html** is the default outer template for all pages, but this can be
+The [site.html](https://github.com/jasonprogrammer/gerbil/blob/master/web/templates/site.html)
+is the default outer template for all pages, but this can be
 overridden for other types of pages simply by creating one of the following
 files:
 

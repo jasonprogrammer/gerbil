@@ -7,11 +7,17 @@
 
 <span class="crumb-separator f7 mh1">/</span>
 
-<span class="crumb-title f5">Generated topic links for use in the home page template</span>
+<span class="crumb-title f5">Topic links</span>
 
 
 </nav>
 
-<h1><a class="st-header-anchor" id="generatedtopiclinksforuseinthehomepagetemplate" href="#generatedtopiclinksforuseinthehomepagetemplate">Generated topic links for use in the home page template</a></h1>
-<p>During a <code>gerbil build</code>, a list of links is created for each pod (topic) you
-have created.</p>
+<h1><a class="st-header-anchor" id="topiclinks" href="#topiclinks">Topic links</a></h1>
+<p>During a <code>gerbil build</code>, an HTML file is created that contains a list of links
+for each pod (topic) you have created.</p>
+<p>An example of this page is <a href="https://github.com/jasonprogrammer/gerbil/blob/master/site/pods/index.html">here</a>.
+In the <a href="https://github.com/jasonprogrammer/gerbil/blob/master/web/templates/home-content.html">home page content template</a>,
+you can insert the following mustache tag:</p>
+<pre><code class="language-xml">{{{topics}}}
+</code></pre>
+<p>This will insert the links into the template.</p>
