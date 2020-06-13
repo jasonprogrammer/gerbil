@@ -84,3 +84,10 @@ body {
 .moderate-comments-container {
     min-height: 30rem;
 }
+
+.gerbil-root-page .body-section pre {
+    background-color: #f6f6f6;
+    display: block;
+    padding: 1em;
+    overflow-x: auto;
+}

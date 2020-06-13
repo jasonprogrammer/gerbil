@@ -4,12 +4,17 @@ Gerbil is a "dynamic website generator", written in
 <a href="https://nim-lang.org/">Nim</a>. It is meant to provide many of the
 conveniences of static site generators (ease of content creation, deploying, and
 maintenance), but to also provide a customizable backend for dynamic features
-such as hosting user comments.
+such as hosting user comments. It is flat-file based (no database used) by
+design.
 
 <br><br>
 
 The Gerbil binary can be used to scaffold and serve a site without writing Nim
 code, or the Gerbil library can be imported and customized.
+
+<br><br>
+
+<b>Note</b>: This is a new project and is still heavily in development.
 
 <h2>Features</h2>
 
@@ -42,6 +47,9 @@ include:
   <li>Links to each topic generated for optional use on the home page</li>
   <li>A generated page listing tags and their associated articles</li>
   <li>Embedding one piece of content into another, using a custom tag</li>
+  <li>
+    <a href="/sample-root-page">Pages with URLs at the site root, generated from markdown files</a>
+  </li>
 </ul>
 
 <h2>Documentation</h2>
@@ -54,4 +62,20 @@ include:
 
 <h2>Source</h2>
 
-The source is available <a href="https://github.com/jasonprogrammer/gerbil">here</a>.
+The MIT-licensed source is available
+<a href="https://github.com/jasonprogrammer/gerbil">here</a>.
+
+<h2>FAQ</h2>
+
+<h3>Why is it named Gerbil?</h3>
+
+As pets, gerbils are:
+
+<ul>
+  <li>Inexpensive</li>
+  <li>Easy to maintain</li>
+  <li>Fast</li>
+</ul>
+
+Those are goals of this project. Also, the name was short and didn't seem to be
+used anywhere else.

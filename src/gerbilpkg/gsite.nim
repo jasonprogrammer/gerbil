@@ -571,12 +571,15 @@ proc getPendingComments*(this: Site): seq[PendingCommentInfo] =
         )
       )
 
-proc getPageHTML*(this: Site, html, headHTML: string): string =
+proc getPageHTML*(
+  this: Site, html, headHTML: string, bodyClass: string=""
+): string =
   var context = newContext()
   context["title"] = ""
   context["head"] = headHTML #"<link href=\"pods.css\"></link>" & headHTML
   context["body"] = html
   context["logo"] = readFile(this.getSiteLogoHTMLPath())
+  context["body_class"] = bodyClass
 
   var siteHTML = readFile(this.getSiteTemplatePath())
   return siteHTML.render(context)
@@ -615,6 +618,13 @@ proc getPendingCommentMD*(
     return comment.getMarkdown()
 
 proc getRootPageHTML*(this: Site, slug, pagesDir: string): string =
+  ## This method is for displaying a "root page", which is a page that is
+  ## generated from a markdown file placed in the <SITE_DIR>/pages directory.
+  ## The markdown file is named after the "URL slug" (only alphanumeric
+  ## characters or the dash character). During the build process, an HTML file
+  ## will be generated for each markdown file in the pages/ directory, and the
+  ## name of each file will be used to display the page at the "root" of the
+  ## site, e.g.: <SITE_URL>/my-slug
   let pagePath = joinPath(pagesDir, fmt"{slug}.html")
   let pageHTML = readFile(pagePath)
 
@@ -623,6 +633,7 @@ proc getRootPageHTML*(this: Site, slug, pagesDir: string): string =
   context["head"] = "" #"<link href=\"pods.css\"></link>" & headHTML
   context["body"] = pageHTML
   context["logo"] = readFile(this.getSiteLogoHTMLPath())
+  context["body_class"] = "gerbil-root-page"
 
   var outerHTML = readFile(this.getRootPageTemplatePath())
   return outerHTML.render(context)
@@ -633,6 +644,7 @@ proc getHomePageHTML*(this: Site): string =
   context["head"] = "" #"<link href=\"pods.css\"></link>" & headHTML
   context["body"] = readFile(this.getPodsIndexHTMLPath())
   context["logo"] = readFile(this.getSiteLogoHTMLPath())
+  context["body_class"] = "gerbil-home"
 
   var siteHTML = readFile(this.getHomeTemplatePath())
   return siteHTML.render(context)
@@ -658,37 +670,6 @@ proc getRandomSpamQuestion*(this: Site): SpamQuestion =
   )
   (result.question, result.answer) = questionText.split('|')
   result.answer = strip(result.answer)
-
-# proc getCenteredContentHTML*(
-#     this: Site, podName, contentID, html, commentsHTML: string
-#   ): string =
-#   var context1 = newContext()
-#   context1["body"] = html
-#   context1["podName"] = podName
-#   context1["contentID"] = contentID
-#   var contentHTML = readFile(joinPath(this.getTemplateDir(), "content.html"))
-#
-#   var context2 = newContext()
-#   context2["body"] = commentsHTML
-#
-#   let spam = this.getRandomSpamQuestion()
-#
-#   context2["spam_question"] = spam.question
-#
-#   var secretText = spam.answer & "|" & fmt"{uint64(epochTime())}"
-#   var config = getAESConfig(joinPath(this.getSiteDir(), "secrets.json"))
-#   var encText = encryptTextAES(config, secretText)
-#
-#   context2["spam_answer_encrypted"] = encText
-#   var commentsHTML = readFile(joinPath(this.getTemplateDir(), "comments.html"))
-#
-#   var context3 = newContext()
-#   context3["body"] = (
-#     contentHTML.render(context1) & commentsHTML.render(context2)
-#   )
-#
-#   var centerHTML = readFile(joinPath(this.getTemplateDir(), "center.html"))
-#   return centerHTML.render(context3)
 
 proc getContentHTML*(this: Site, podName, contentID: string): string =
   let pod = newPod(this.getSiteDir(), podName)
@@ -721,7 +702,8 @@ proc getContentHTML*(this: Site, podName, contentID: string): string =
 
   return this.getPageHTML(
     contentWrapHTML.render(context1) & commentsWrapHTML.render(context2),
-    "<script src=\"/static/dist/js/content.entry.js\"></script>"
+    "<script src=\"/static/dist/js/content.entry.js\"></script>",
+    "gerbil-content"
   )
 
 proc isPodNameValid*(this: Site, podName: string): bool =
