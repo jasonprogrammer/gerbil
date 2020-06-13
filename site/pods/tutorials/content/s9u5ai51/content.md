@@ -6,7 +6,7 @@ Articles are grouped into pods (topics). To add an article, run the following CL
 gerbil create mytopic
 ```
 
-This will create a directory called `mytopic` under the **pods** directory, as
+This will create a directory called **mytopic** under the **pods** directory, as
 well as some additional files:
 
 ```shell
