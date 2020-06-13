@@ -1,5 +1,5 @@
 body {
-    font-family: Poppins;
+    font-family: ClearSans;
     background-color: #3a3a3a;
 }
 
@@ -18,13 +18,12 @@ body {
 
 .body-section {
     background-color: white;
-    padding: 2rem;
+    padding: 2rem 4rem;
     min-height: 30rem;
 }
 
 @media only screen and (min-width: 768px) {
     .body-section {
-        padding-left: 3rem;
         margin-left: 2rem;
     }
     .center-section {
@@ -34,6 +33,10 @@ body {
         border-right: 1px solid #eee;
         border-left: 1px solid #eee;
     }
+}
+
+.st-content h1 {
+    letter-spacing: -.05rem;
 }
 
 .st-content pre {

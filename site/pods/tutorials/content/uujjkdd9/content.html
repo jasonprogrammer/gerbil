@@ -13,4 +13,25 @@
 </nav>
 
 <h1><a class="st-header-anchor" id="commentandmoderationsystem" href="#commentandmoderationsystem">Comment and Moderation System</a></h1>
-<p><img src="./static/comment-form.png" alt="image of form to add a comment" /></p>
+<p>At the bottom of this page, there's a comment form that allows the user to
+submit a CommonMark (markdown) formatted comment about the article. All
+comments are moderated, so the comment will not immediately appear on the page
+after submission.</p>
+<h2><a class="st-header-anchor" id="whathappenswhenacommentissubmitted" href="#whathappenswhenacommentissubmitted">What happens when a comment is submitted?</a></h2>
+<p>The comment is stored in a
+<strong>comments/</strong> directory that resides in the directory for the associated piece
+of content (article). For example, this article resides on a file system, with
+the following path:</p>
+<pre><code class="language-shell">~/projects/gerbil/site/pods/tutorials/content/uujjkdd9/content.md
+</code></pre>
+<p>If a comment is submitted for this article, a directory will be
+created under <strong>&lt;article directory&gt;</strong>/comments/, and a markdown file with the
+comment's contents will be created there.</p>
+<p>A file will also be created in this directory:</p>
+<pre><code class="language-shell">~/projects/gerbil/site/comment-review
+</code></pre>
+<p>to help the moderation system list new comments needing review. The file is
+named using the comment ID, e.g.:</p>
+<pre><code class="language-shell">$:~/projects/gerbil/site/comment-review$ cat xms0bqd1.txt
+tutorials|uujjkdd9|xms0bqd1
+</code></pre>
