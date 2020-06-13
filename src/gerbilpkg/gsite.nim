@@ -177,8 +177,6 @@ proc getSubContentList*(this: Site, html: string): seq[SubContentInfo] =
       ))
 
 proc buildPodsHTMLFile*(this: Site, blocks: Table[string, string]) =
-  var context = newContext()
-
   let podNamesMap = this.getPodNamesMap()
   var podNames = newSeq[string]()
 
@@ -193,10 +191,8 @@ proc buildPodsHTMLFile*(this: Site, blocks: Table[string, string]) =
     context1["href"] = "/c/" & podName
     context1["text"] = podMeta.title
     podLinks &= blocks["taglink"].render(context1)
-  context["topics"] = podLinks
 
-  let podsHTML = readFile(this.getHomeContentTemplatePath())
-  writeFile(this.getPodsIndexHTMLPath(), podsHTML.render(context))
+  writeFile(this.getPodsIndexHTMLPath(), podLinks)
 
 proc buildBreadCrumbLinks(
   links: seq[Context], currentPageTitle: string,
@@ -642,7 +638,12 @@ proc getHomePageHTML*(this: Site): string =
   var context = newContext()
   context["title"] = ""
   context["head"] = "" #"<link href=\"pods.css\"></link>" & headHTML
-  context["body"] = readFile(this.getPodsIndexHTMLPath())
+
+  var context1 = newContext()
+  context1["topics"] = readFile(this.getPodsIndexHTMLPath())
+
+  let homeBodyHTML = readFile(this.getHomeContentTemplatePath())
+  context["body"] = homeBodyHTML.render(context1)
   context["logo"] = readFile(this.getSiteLogoHTMLPath())
   context["body_class"] = "gerbil-home"
 

@@ -44,6 +44,7 @@ body {
     display: block;
     padding: 1em;
     overflow-x: auto;
+    font-size: 1rem;
 }
 
 .st-content a {
@@ -90,4 +91,8 @@ body {
     display: block;
     padding: 1em;
     overflow-x: auto;
+}
+
+.gerbil-home .body-section a {
+    color: #3a3a3a;
 }
