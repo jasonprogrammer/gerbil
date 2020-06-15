@@ -38,8 +38,8 @@ nvm use && npm install && npm start
 
 ## Run the sample site
 
-Next, open up another terminal window, navigate to the **gerbil/** directory
-and run:
+Next, open up another terminal window, navigate to the cloned directory, and
+run:
 
 ```shell
 gerbil build && gerbil serve
