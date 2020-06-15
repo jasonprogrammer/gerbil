@@ -7,9 +7,19 @@
 
 <span class="crumb-separator f7 mh1">/</span>
 
-<span class="crumb-title f5">Building a site with Gerbil</span>
+<span class="crumb-title f5">How to build a site</span>
 
 
 </nav>
 
-<h1><a class="st-header-anchor" id="buildingasitewithgerbil" href="#buildingasitewithgerbil">Building a site with Gerbil</a></h1>
+<h1><a class="st-header-anchor" id="howtobuildasite" href="#howtobuildasite">How to build a site</a></h1>
+<p>To build your site, run:</p>
+<pre><code class="language-shell">gerbil build
+</code></pre>
+<p>in the root directory (the directory that contains the <strong>site/</strong> and <strong>web/</strong>
+directories).</p>
+<p>The HTML files for each article should only built if the markdown changes. To
+<em>force</em> a rebuild, run:</p>
+<pre><code class="language-shell">gerbil clean &amp;&amp; gerbil build
+</code></pre>
+<p><strong>Next</strong>: <a href="/c/tutorials/so8t3bl8/how-to-serve-the-site">Serving the site</a></p>

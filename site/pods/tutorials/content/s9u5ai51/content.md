@@ -38,8 +38,9 @@ We can use a text editor to edit the markdown file that was created. The
 markdown format expected by Gerbil is [CommonMark](https://commonmark.org/).
 
 Please see this [example Gerbil markdown document](/c/tutorials/04n1xhdz/a-sample-markdown-page).
-There is a link to the markdown source, so you can see how to add elements
-like images.
+There is a
+[link to the markdown source](https://github.com/jasonprogrammer/gerbil/blob/master/site/pods/tutorials/content/04n1xhdz/content.md),
+so you can see how to add elements like images.
 
 Once you have edited the markdown file to your satisfaction, you can build
 the site.
