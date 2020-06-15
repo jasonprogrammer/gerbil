@@ -18,13 +18,14 @@ body {
 
 .body-section {
     background-color: white;
-    padding: 2rem 4rem;
+    padding: 2rem 2rem;
     min-height: 30rem;
 }
 
 @media only screen and (min-width: 768px) {
     .body-section {
         margin-left: 2rem;
+        padding: 2rem 4rem;
     }
     .center-section {
         -webkit-box-shadow: 10px 10px 15px -10px rgba(179,179,179,1);
