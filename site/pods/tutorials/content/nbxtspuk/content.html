@@ -1,0 +1,56 @@
+<nav class="crumb-nav mb5">
+  <a class="crumb-link f5" href="/">Home</a>
+
+<span class="crumb-separator f7 mh1">/</span>
+
+<a class="crumb-link f5" href="/c/tutorials">Tutorials</a>
+
+<span class="crumb-separator f7 mh1">/</span>
+
+<span class="crumb-title f5">Getting started</span>
+
+
+</nav>
+
+<h1><a class="st-header-anchor" id="gettingstarted" href="#gettingstarted">Getting started</a></h1>
+<h2><a class="st-header-anchor" id="prequisites" href="#prequisites">Prequisites</a></h2>
+<ul>
+<li>Install the latest version of <a href="https://nim-lang.org/install.html">Nim</a>.</li>
+<li>Install NodeJS (the version used in testing was v13.9.0).</li>
+<li>Install <a href="https://github.com/nvm-sh/nvm">nvm</a>.</li>
+</ul>
+<h2><a class="st-header-anchor" id="installing" href="#installing">Installing</a></h2>
+<p>For now, the easiest way to install Gerbil is to do the following:</p>
+<ol>
+<li>Clone the repository:</li>
+</ol>
+<pre><code class="language-shell">git clone https://github.com/jasonprogrammer/gerbil
+</code></pre>
+<ol start="2">
+<li>Run:</li>
+</ol>
+<pre><code class="language-shell">nimble install
+</code></pre>
+<p>This should make the <strong>gerbil</strong> executable ready for use.</p>
+<h2><a class="st-header-anchor" id="buildthefrontendfiles" href="#buildthefrontendfiles">Build the front-end files</a></h2>
+<p>Now that we've installed Gerbil, we need to build the front-end files in the
+<strong>web/</strong> directory.</p>
+<p>Run:</p>
+<pre><code class="language-shell">cd web
+nvm use &amp;&amp; npm install &amp;&amp; npm start
+</code></pre>
+<h2><a class="st-header-anchor" id="runthesamplesite" href="#runthesamplesite">Run the sample site</a></h2>
+<p>Next, open up another terminal window, navigate to the <strong>gerbil/</strong> directory
+and run:</p>
+<pre><code class="language-shell">gerbil build &amp;&amp; gerbil serve
+</code></pre>
+<p>If you see the following:</p>
+<pre><code class="language-shell">INFO Jester is making jokes at http://0.0.0.0:5000
+Starting 50 threads
+Listening on port 5000
+</code></pre>
+<p>then you should be able to open a browser, and navigate to
+<a href="http://localhost:5000">http://localhost:5000</a> to browse the running site.</p>
+<p>Once you've seen that the site is running, cancel the running process
+(&lt;ctrl&gt;-c) and let's create some content!</p>
+<p><strong>Next</strong>: <a href="/c/tutorials/s9u5ai51/how-to-add-an-article">How to add an article</a></p>
