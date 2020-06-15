@@ -43,7 +43,10 @@ proc listenCLI() =
   jesterServer.register(GerbilCommentRouter)
   jesterServer.register(GerbilModerateRouter)
   jesterServer.register(GerbilSlugRouter)
-  jesterServer.register(Gerbil404Router)
+
+  # this route matcher must be last
+  jesterServer.register(Gerbil404RouteMatcher)
+
   jesterServer.serve()
 
 when isMainModule:

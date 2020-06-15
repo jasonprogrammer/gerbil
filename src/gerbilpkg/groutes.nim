@@ -44,12 +44,12 @@ router GerbilModerateRouter:
     ## successfully "unlock" a "locked" login system. Either way a 404 is
     ## returned to not give any indication that the URL exists, or the unlock
     ## was successful or unsuccessful.
-    if not isModPinValid(request):
-      resp Http404
-
     var site = getSite()
+    if not isModPinValid(request):
+      resp Http404, site.get404HTML()
+
     discard tryRemoveFile(site.getModLoginFailCountPath())
-    resp Http404
+    resp Http404, site.get404HTML()
 
   get "/moderate/login":
     ## Shows the moderator login page. A valid ?pin=MODERATOR_PIN must be
@@ -98,12 +98,12 @@ router GerbilModerateRouter:
     if request.params["username"] != config["moderator_username"].getStr():
       getLogger().info("Username invalid")
       site.incModLoginFailCount()
-      resp(Http404)
+      resp Http404, site.get404HTML()
 
     if request.params["password"] != config["moderator_password"].getStr():
       getLogger().info("Password invalid")
       site.incModLoginFailCount()
-      resp(Http404)
+      resp Http404, site.get404HTML()
 
     let sessionID = getUUID()
     createDir(".sessions")
@@ -377,6 +377,10 @@ router Gerbil404Router:
   error Http404:
     resp Http404, getSite().get404HTML()
 
+proc Gerbil404RouteMatcher*(request: Request): Future[ResponseData] {.async.} =
+  block route:
+    resp Http404, getSite().get404HTML()
+
 export GerbilStaticRouter
 export GerbilContentRouter
 export GerbilPodTagsRouter
@@ -385,3 +389,4 @@ export GerbilModerateRouter
 export GerbilSiteRouter
 export GerbilSlugRouter
 export Gerbil404Router
+export Gerbil404RouteMatcher
