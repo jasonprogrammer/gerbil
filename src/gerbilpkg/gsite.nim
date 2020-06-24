@@ -140,7 +140,7 @@ proc getPodsIndexHTMLPath*(this: Site): string =
   return joinPath(this.getPodsDir(), "index.html")
 
 proc getHomeContentTemplatePath*(this: Site): string =
-  return joinPath(this.getTemplateDir(), "home-content.html")
+  return joinPath(this.getRootPagesDir(), "home.html")
 
 proc getModBlocksPath*(this: Site): string =
   return joinPath(

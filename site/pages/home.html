@@ -1,0 +1,66 @@
+<h2>Introduction</h2>
+<p>Gerbil is a &quot;dynamic website generator&quot;, written in
+<a href="https://nim-lang.org/">Nim</a>. It is meant to provide many of the
+conveniences of static site generators (ease of content creation, deploying, and
+maintenance), but to also provide a customizable backend for dynamic features
+such as hosting user comments. It is flat-file based (no database used) by
+design.</p>
+<p>The Gerbil binary can be used to scaffold and serve a site without writing Nim
+code, or the Gerbil library can be imported and customized.</p>
+<p><strong>Note</strong>: This is a new project and is still heavily in development.</p>
+<h2>Motivation</h2>
+<p>Gerbil was written for
+<a href="https://simpletutorials.com">simpletutorials.com</a>, a programming
+tutorials website.</p>
+<h2>Features</h2>
+<p>This site is built and served with the Gerbil binary. The articles are meant
+to both be a guide to Gerbil, as well as demonstrate its capabilities, which
+include:</p>
+<ul>
+<li>Articles written in <a href="https://commonmark.org/">CommonMark markdown format</a></li>
+<li><a href="/c/tutorials/s9u5ai51/how-to-add-an-article">CLI command to help scaffold new topics and articles</a></li>
+<li><a href="/c/tutorials/x2ozb8eo/bread-crumb-navigation">Auto-generated bread crumb navigation to articles</a></li>
+<li><a href="/c/tutorials/16m8cbsl/syntax-highlighting-for-code">Source code highlighting</a></li>
+<li><a href="/c/tutorials/uujjkdd9/comment-and-moderation-system">Basic anonymous commenting and moderation system</a></li>
+<li><a href="/c/tutorials/pgpbssmk/writing-articles-in-commonmark-and-html">Embedding HTML into the markdown</a></li>
+<li><a href="/c/tutorials/3p581if8/anchor-links-for-each-article-header">Anchor links to headers created for articles</a></li>
+<li><a href="/c/tutorials/4zziocpv/customizable-mustache-templates-for-pages">Customizable mustache templates used to construct pages</a></li>
+<li><a href="/c/tutorials/21owtxh3/generated-topic-links-for-use-in-the-home-page-template">Links to each topic generated for optional use on the home page</a></li>
+<li><a href="/c/tutorials/hto4cwju/tags-for-articles">A generated page listing tags and their associated articles, per topic</a></li>
+<li><a href="/c/tutorials/9o1l3zkz/embedding-one-piece-of-content-into-another">Embedding one piece of content into another, using a custom tag</a></li>
+<li><a href="/sample-root-page">Pages with URLs at the site root, generated from markdown files</a></li>
+</ul>
+<h2>Getting started</h2>
+<p>See the
+<a href="/c/tutorials/nbxtspuk/getting-started">getting started guide</a>.</p>
+<h2>Documentation</h2>
+<p>{{{topics}}}</p>
+<h2>Source</h2>
+<p>The MIT-licensed source is available
+<a href="https://github.com/jasonprogrammer/gerbil">here</a>.<br><br></p>
+<p>Gerbil serves websites using the
+<a href="https://github.com/dom96/jester">Jester web framework</a> and could
+not exist without it. Gerbil also relies heavily on the following dependencies:</p>
+<ul>
+<li><a href="https://github.com/iffy/nim-argparse">https://github.com/iffy/nim-argparse</a></li>
+<li><a href="https://github.com/soasme/nim-markdown">https://github.com/soasme/nim-markdown</a></li>
+<li><a href="https://github.com/soasme/nim-mustache">https://github.com/soasme/nim-mustache</a></li>
+<li><a href="https://github.com/c-blake/cligen">https://github.com/c-blake/cligen</a></li>
+<li><a href="https://github.com/cheatfate/nimcrypto">https://github.com/cheatfate/nimcrypto</a></li>
+<li><a href="https://github.com/nitely/nim-regex">https://github.com/nitely/nim-regex</a></li>
+<li><a href="https://github.com/pragmagic/uuids">https://github.com/pragmagic/uuids</a></li>
+</ul>
+<p>Many thanks to the authors of these libraries!</p>
+<h2>Contact</h2>
+<p>Gerbil is written by <a href="https://twitter.com/jasonprogrammer">Jason Jones</a></p>
+<h2>FAQ</h2>
+<p>Why is it named Gerbil?</p>
+<p>As pets, gerbils are:</p>
+<ul>
+<li>Inexpensive</li>
+<li>Easy to maintain</li>
+<li>Lighweight</li>
+<li>Fast</li>
+</ul>
+<p>Those are goals of this project. Also, the name was short and didn't seem to be
+used anywhere else. 😉</p>
