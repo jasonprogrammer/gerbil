@@ -28,7 +28,7 @@ hljs.registerLanguage('css', css);
 import 'highlight.js/styles/github.css';
 
 import $ from "cash-dom";
-const axios = require('axios');
+import axios from 'axios';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 function submitComment() {
