@@ -16,7 +16,7 @@ type
     path*: string
 
 proc getMeta*(path: string): PodMeta =
-  if not existsFile(path):
+  if not fileExists(path):
     getLogger().info(fmt"Pod meta file: {path} does not exist")
     return
 
@@ -75,7 +75,7 @@ proc newPod*(siteDir, name: string): Pod =
   result.tagsHTMLPath = joinPath(result.dir, "tags.html")
 
 proc hasContentID*(this: Pod, contentID: string): bool =
-  return existsDir(joinPath(this.contentDir, contentID))
+  return dirExists(joinPath(this.contentDir, contentID))
 
 proc getMeta*(this: Pod): PodMeta =
   return getMeta(this.metaPath)
@@ -86,7 +86,7 @@ proc getContentIDs*(this: Pod): seq[string] =
       result.add(path)
 
 proc contentExists*(this: Pod, contentID: string): bool =
-  return existsFile(joinPath(this.contentDir, contentID))
+  return fileExists(joinPath(this.contentDir, contentID))
 
 proc createContent*(this: Pod): Content =
   var contentID = getRandStr(8)

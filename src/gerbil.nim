@@ -4,7 +4,6 @@ import cligen
 import jester
 import mustache
 import os
-import parseopt
 
 import  ./gerbilpkg/aes_encrypt,
         ./gerbilpkg/gcli,

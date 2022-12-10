@@ -3,14 +3,13 @@ import jester
 import json
 import mustache
 import os
-import parseopt
 import times
 
 proc getSessionPath*(sessionID: string): string =
   return joinPath(".sessions", sessionID & ".json")
 
 proc sessionExists*(sessionID: string): bool =
-  return existsFile(getSessionPath(sessionID))
+  return fileExists(getSessionPath(sessionID))
 
 proc getSession*(sessionID: string): JsonNode =
   return parseJson(readFile(getSessionPath(sessionID)))
@@ -27,7 +26,7 @@ proc deleteSession*(request: Request): bool =
 
   let sessionPath = getSessionPath(cookies[key])
 
-  if existsFile(sessionPath):
+  if fileExists(sessionPath):
     return tryRemoveFile(sessionPath)
 
   return true

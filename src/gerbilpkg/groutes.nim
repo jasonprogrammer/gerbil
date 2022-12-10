@@ -235,7 +235,7 @@ router GerbilStaticRouter:
     if not path.startsWith(staticDir):
       resp(Http403)
 
-    if not existsFile(path):
+    if not fileExists(path):
       resp Http404, getSite().get404HTML()
 
     sendFile(path)
@@ -301,7 +301,7 @@ router GerbilContentRouter:
     if not path.startsWith(staticDir):
       resp(Http403)
 
-    if not existsFile(path):
+    if not fileExists(path):
       resp Http404, site.get404HTML()
 
     sendFile(path)

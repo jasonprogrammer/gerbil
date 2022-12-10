@@ -25,7 +25,7 @@ type
     updatedTS*: uint64 # seconds from epoch, UTC
 
 proc getContentMeta*(path, publishedPath: string): ContentMeta =
-  if not existsFile(path):
+  if not fileExists(path):
     getLogger().info(fmt"Content meta file: {path} does not exist")
     return
 
@@ -126,7 +126,7 @@ proc getLastBuildModPath*(this: Content): string =
 
 proc getLastBuildMod*(this: Content): int64 =
   let lastmodPath = this.getLastBuildModPath()
-  if not existsFile(lastmodPath):
+  if not fileExists(lastmodPath):
     return 0
   return parseBiggestInt(readFile(lastmodPath))
 
@@ -134,7 +134,7 @@ proc getMDLastMod*(this: Content): int64 =
   return getLastModificationTime(this.path).toUnix()
 
 proc getCommentIDs*(this: Content): seq[string] =
-  if not existsDir(this.commentsDir):
+  if not dirExists(this.commentsDir):
     return result
 
   for kind, path in walkDir(this.commentsDir, true):
@@ -144,7 +144,7 @@ proc getCommentIDs*(this: Content): seq[string] =
 proc getMeta*(this: Content): ContentMeta =
   return getContentMeta(this.metaPath, this.publishedPath)
 
-method `$`*(token: LinkHeading): string =
+method `$`*(token: LinkHeading): string {.locks: "unknown".} =
   let num = fmt"{token.level}"
   let child = $token.children
   let anchorName = child.strip().toLower().replace(re"\W+", "")
@@ -160,7 +160,7 @@ proc writeBuildMod*(this: Content) =
 method parse(
   this: LinkAtxHeadingParser, doc: string, start: int = 0
 ): ParseResult {.locks: "unknown".} =
-  let res = doc.since(start).getAtxHeading()
+  let res = doc.getAtxHeading(start)
   if res.size == -1: return ParseResult(token: nil, pos: -1)
   return ParseResult(
     token: LinkHeading(
