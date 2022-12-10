@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel css/*.entry.scss js/*.entry.js --out-dir static/dist --public-url .",
+    "start": "parcel css/*.entry.scss js/*.entry.js --dist-dir static/dist --public-url .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
