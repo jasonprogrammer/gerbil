@@ -16,7 +16,7 @@ proc isPageSlugValid*(slug, pagesDir: string): bool =
   return (
     (len(slug) <= 130) and
     slug.match(re"^[\w\-]+$", regexMatch) and
-    existsFile(joinPath(pagesDir, fmt"{slug}.html"))
+    fileExists(joinPath(pagesDir, fmt"{slug}.html"))
   )
 
 

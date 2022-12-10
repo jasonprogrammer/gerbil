@@ -1,4 +1,4 @@
-import hljs from 'highlight.js/lib/highlight';
+import hljs from 'highlight.js';
 
 import javascript from 'highlight.js/lib/languages/javascript';
 hljs.registerLanguage('javascript', javascript);
@@ -6,7 +6,7 @@ hljs.registerLanguage('javascript', javascript);
 import python from 'highlight.js/lib/languages/python';
 hljs.registerLanguage('python', python);
 
-import nim from 'highlight.js/lib/languages/nimrod';
+import nim from 'highlight.js/lib/languages/nim';
 hljs.registerLanguage('nim', nim);
 
 import shell from 'highlight.js/lib/languages/shell';

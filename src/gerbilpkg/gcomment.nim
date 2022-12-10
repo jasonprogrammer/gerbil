@@ -19,12 +19,12 @@ type
     updatedTS*: uint64 # seconds from epoch, UTC
 
 proc isCommentPublished(publishedPath: string): bool =
-  if not existsFile(publishedPath):
+  if not fileExists(publishedPath):
     return false
   return readFile(publishedPath).strip() == "1"
 
 proc getCommentMeta*(path, publishedPath: string): CommentMeta =
-  if not existsFile(path):
+  if not fileExists(path):
     getLogger().info(fmt"Comment meta file: {path} does not exist")
     return
 

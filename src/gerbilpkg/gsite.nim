@@ -99,7 +99,7 @@ proc getSiteTemplatePath*(this: Site): string =
 
 proc getTemplatePathOrDefault*(this: Site, fileName: string): string =
   let templatePath = joinPath(this.getTemplateDir(), fileName)
-  if existsFile(templatePath):
+  if fileExists(templatePath):
     return templatePath
   return this.getSiteTemplatePath()
 
@@ -301,11 +301,11 @@ proc buildCommentsMDToHTML*(
     var commentMeta = getCommentMeta(comment.metaPath, comment.publishedPath)
     commentMetas.add(commentMeta)
 
-    metaMap.add(commentMeta.id, comment)
+    metaMap[commentMeta.id] = comment
 
     var hash = ($secureHashFile(comment.path)).toLower()
 
-    if hash == commentMeta.hash and existsFile(comment.htmlPath):
+    if hash == commentMeta.hash and fileExists(comment.htmlPath):
       continue
 
     getLogger().info(fmt"Building comment: {comment.id}")
@@ -366,7 +366,7 @@ proc buildContentMDToHTML*(
 
   var hash = ($secureHashFile(content.path)).toLower()
   let isHashChanged = (
-    (hash != contentMeta.hash) or not existsFile(content.htmlPath)
+    (hash != contentMeta.hash) or not fileExists(content.htmlPath)
   )
   if not isHashChanged:
     return
@@ -418,7 +418,7 @@ proc listContent*(this: Site, pod: Pod, content: Content) =
   getLogger().info(fmt"{content.dir} {meta.title}")
 
 proc listPod*(this: Site, pod: Pod) =
-  if not existsDir(pod.dir):
+  if not dirExists(pod.dir):
     getLogger().info(fmt"Pod dir: {pod.dir} does not exist")
     return
 
@@ -433,7 +433,7 @@ proc listSiteContent*(this: Site) =
     this.listPod(pod)
 
 proc buildPod*(this: Site, pod: Pod, blocks: Table[string, string]) =
-  if not existsDir(pod.dir):
+  if not dirExists(pod.dir):
     getLogger().info(fmt"Pod dir: {pod.dir} does not exist")
     return
 
@@ -466,7 +466,7 @@ proc buildPod*(this: Site, pod: Pod, blocks: Table[string, string]) =
   this.buildPodTagHTMLFile(pod, contentIndex, blocks)
 
 proc cleanFilesInPod*(this: Site, pod: Pod) =
-  if not existsDir(pod.dir):
+  if not dirExists(pod.dir):
     getLogger().info(fmt"Pod dir: {pod.dir} does not exist")
     return
 
@@ -505,7 +505,7 @@ proc getRandAESAAD*(numChars: int): string =
 
 proc createDefaultSecrets*(this: Site) =
   let configPath = this.getSecretsConfigPath()
-  if not existsFile(configPath):
+  if not fileExists(configPath):
     echo "Creating default secrets file in site/secrets.json..."
     var meta = %*{
       "aes_secret_key": getRandStr(8),
@@ -678,7 +678,7 @@ proc getContentHTML*(this: Site, podName, contentID: string): string =
 
   let contentHTML = readFile(content.htmlPath)
   var commentsHTML = ""
-  if existsFile(content.commentsHTMLPath):
+  if fileExists(content.commentsHTMLPath):
     commentsHTML = readFile(content.commentsHTMLPath)
 
   var context1 = newContext()
@@ -712,8 +712,8 @@ proc isPodNameValid*(this: Site, podName: string): bool =
   return (
     (len(podName) <= 80) and
     podName.match(re"^[\w\-]+$", regexMatch) and
-    existsDir(joinPath(this.getPodsDir(), podName)) and
-    existsFile(joinPath(this.getPodsDir(), podName, "meta.json"))
+    dirExists(joinPath(this.getPodsDir(), podName)) and
+    fileExists(joinPath(this.getPodsDir(), podName, "meta.json"))
   )
 
 proc isContentIDValid*(this: Site, podName: string): bool =
@@ -721,8 +721,8 @@ proc isContentIDValid*(this: Site, podName: string): bool =
   return (
     (len(podName) <= 80) and
     podName.match(re"^[\w\-]+$", regexMatch) and
-    existsDir(joinPath(this.getPodsDir(), podName)) and
-    existsFile(joinPath(this.getPodsDir(), podName, "meta.json"))
+    dirExists(joinPath(this.getPodsDir(), podName)) and
+    fileExists(joinPath(this.getPodsDir(), podName, "meta.json"))
   )
 
 proc getContentDir*(this: Site, podName: string, contentID: string): string =
@@ -740,7 +740,7 @@ proc isContentValid*(this: Site, podName: string, contentID: string): bool =
     return false
 
   let contentDir = this.getContentDir(podName, contentID)
-  return existsFile(joinPath(contentDir, "meta.json"))
+  return fileExists(joinPath(contentDir, "meta.json"))
 
 proc getNumPendingComments*(this: Site): int =
   let config = readSiteConfig(this.getConfigPath())
@@ -754,7 +754,7 @@ proc getNumPendingComments*(this: Site): int =
 proc isCommentingDisabledGlobally*(this: Site): bool =
   let disabledPath = this.getCommentsDisabledPath()
   if (
-    existsFile(disabledPath) and
+    fileExists(disabledPath) and
     readFile(disabledPath).strip() == "1"
   ):
     return true
@@ -779,7 +779,7 @@ proc get404HTML*(this: Site): string =
 proc getSiteDir*(): string =
   var path = getCurrentDir()
 
-  while not existsFile(joinPath(path, "site", "site.json")):
+  while not fileExists(joinPath(path, "site", "site.json")):
     path = parentDir(path)
     if path == "":
       raise newException(Exception, "Unable to find site directory")
