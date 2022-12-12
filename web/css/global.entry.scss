@@ -16,15 +16,20 @@ body {
     color: #4d4d4d;
 }
 
+.body-section-container {
+    display: flex;
+    justify-content: center;
+}
+
 .body-section {
     background-color: white;
     padding: 2rem 2rem;
     min-height: 30rem;
+    width: 38rem;
 }
 
 @media only screen and (min-width: 768px) {
     .body-section {
-        margin-left: 2rem;
         padding: 2rem 4rem;
     }
     .center-section {

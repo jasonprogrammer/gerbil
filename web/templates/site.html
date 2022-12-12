@@ -16,7 +16,6 @@
     }
   </style>
 
-  <link rel="stylesheet" href="/static/css/tachyons.min.css" type="text/css">
   <link rel="stylesheet" href="/static/css/global.css" type="text/css">
   <link rel="stylesheet" href="/static/dist/css/global.entry.css" type="text/css">
   <link rel="stylesheet" href="/static/dist/js/content.entry.css" type="text/css">
@@ -24,13 +23,15 @@
 <body class="{{body_class}}">
 
   <nav class="pa3 pa4-ns">
-    <a class="link dim black b f2 db" href="/" title="Home">
+    <a class="" href="/" title="Home">
       <span class="logo-text">Gerbil</span> 🐹
     </a>
   </nav>
 
-  <section class="mw8-ns body-section f4 lh-copy">
-  {{{body}}}
+  <section class="body-section-container">
+    <div class="body-section">
+      {{{body}}}
+    </div>
   </section>
 
   <link rel="stylesheet" href="/static/css/fouc-show.css" type="text/css">
